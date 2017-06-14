@@ -1,0 +1,207 @@
+{
+    "orderList": [
+        {
+            "type": "normal",
+            "orderId": "QX7539516384123",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": " C.COLECTARE 刘思聪 新款圆领长袖波浪弧形下摆撞色拼接OL修身双层连衣裙 L12013",
+                    "productImg": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4139356267,2460854296&fm=117&gp=0.jpg",
+                    "price": 1234.00,
+                    "originalPrice": 4567.00,
+                    "skuInfo": "颜色 黑色  尺码 L码"
+                }
+            ],
+            "orderInfo": "共1件商品 实付￥1234.00元"
+        },
+        {
+            "type": "pay",
+            "orderId": "1234567",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": "ZHANGSHUAI 张帅 高圆圆 范冰冰 angelababy 杨思琦 明星同款 甜美夏日条纹棒棒糖连衣裙 Z00442020051",
+                    "productImg": "http://upload-images.jianshu.io/upload_images/1923109-df41173c8bf0bf56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                    "price": 2345.00,
+                    "originalPrice": 4567.00,
+                    "skuInfo": "颜色 黑色  尺码 L码"
+                }
+            ],
+            "orderInfo": "共1件商品 实付￥4567.00元"
+        },
+        {
+            "type": "receive",
+            "orderId": "1234567",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": "吉承 JICHENG 李宇春 黄磊 郁可唯 张亮 中国好声音导师 雨神 萧敬腾 明星同款 放飞梦想 鹤影系列 天使卫衣 翅膀卫衣 梦想卫衣 梦想导师卫衣 男女同款 四色入",
+                    "productImg": "http://upload-images.jianshu.io/upload_images/1923109-df41173c8bf0bf56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                    "price": 1234.00,
+                    "originalPrice": 1234.00,
+                    "skuInfo": "颜色 黑色  尺码 L码"
+                }
+            ],
+            "orderInfo": "共1件商品 实付￥300.00元"
+        },
+        {
+            "type": "normal",
+            "orderId": "1234567",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": "grace deng grace 瞬间的永恒系列  彩色荆棘鸟印花接拼PU皮烧花工艺   长袖连衣裙G00243020004",
+                    "productImg": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4139356267,2460854296&fm=117&gp=0.jpg",
+                    "price": 1234,
+                    "originalPrice": 4567,
+                    "skuInfo": "颜色 黑色  尺码 L码"
+                }
+            ],
+            "orderInfo": "共1件商品 实付￥300.00元"
+        },
+                {
+            "type": "pay",
+            "orderId": "1234567",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": "ZHANGSHUAI 张帅 高圆圆 范冰冰 angelababy 杨思琦 明星同款 甜美夏日条纹棒棒糖连衣裙 Z00442020051",
+                    "productImg": "http://upload-images.jianshu.io/upload_images/1923109-df41173c8bf0bf56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                    "price": 2345.00,
+                    "originalPrice": 4567.00,
+                    "skuInfo": "颜色 黑色  尺码 S码"
+                }
+            ],
+            "orderInfo": "共1件商品 实付￥300.00元"
+        },
+        {
+            "type": "normal",
+            "orderId": "1234567",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": "grace deng grace 瞬间的永恒系列  彩色荆棘鸟印花接拼PU皮烧花工艺   长袖连衣裙G00243020004",
+                    "productImg": "http://upload-images.jianshu.io/upload_images/1923109-df41173c8bf0bf56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                    "price": 1234,
+                    "originalPrice": 4567,
+                    "skuInfo": "颜色 黑色  尺码 L码"
+                }
+            ],
+            "orderInfo": "共1件商品 实付￥1234.00元"
+        },
+        {
+            "type": "normal",
+            "orderId": "1234567",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": "grace deng grace 瞬间的永恒系列  彩色荆棘鸟印花接拼PU皮烧花工艺   长袖连衣裙G00243020004",
+                    "productImg": "http://upload-images.jianshu.io/upload_images/1923109-df41173c8bf0bf56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                    "price": 1234,
+                    "originalPrice": 4567,
+                    "skuInfo": "颜色 黑色  尺码 L码"
+                }
+            ],
+            "orderInfo": "共1件商品 实付￥300.00元"
+        },
+        {
+            "type": "normal",
+            "orderId": "1234567",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": "grace deng grace 瞬间的永恒系列  彩色荆棘鸟印花接拼PU皮烧花工艺   长袖连衣裙G00243020004",
+                    "productImg": "http://upload-images.jianshu.io/upload_images/1923109-df41173c8bf0bf56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                    "price": 1000.00,
+                    "originalPrice": 1999.00,
+                    "skuInfo": "颜色 黑色  尺码 XXXL码"
+                },
+                {
+                    "productId": 123456,
+                    "productName": "Unlogical Poem Timmy Tian 作家之屋系列 作家之屋色织拼接黑植鞣革拼接手提包       （定制款）",
+                    "productImg": "http://upload-images.jianshu.io/upload_images/1923109-df41173c8bf0bf56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                    "price": 999.00,
+                    "originalPrice": 999.00,
+                    "skuInfo": "颜色 黑色  尺码 XS码"
+                }
+            ],
+            "orderInfo": "共2件商品 实付￥4999.00元"
+        },
+        {
+            "type": "normal",
+            "orderId": "1234567",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": "lulu liu 刘译璐 圆领无袖前襟拼接装饰炫彩印花前短后长下摆连衣裙 L00343020006",
+                    "productImg": "http://upload-images.jianshu.io/upload_images/1923109-df41173c8bf0bf56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                    "price": 1234,
+                    "originalPrice": 4567,
+                    "skuInfo": "颜色 黑色  尺码 L码"
+                }
+            ],
+            "orderInfo": "共1件商品 实付￥300.00元"
+        },
+                {
+            "type": "pay",
+            "orderId": "1234567",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": "ZHANGSHUAI 张帅 高圆圆 范冰冰 angelababy 杨思琦 明星同款 甜美夏日条纹棒棒糖连衣裙 Z00442020051",
+                    "productImg": "http://upload-images.jianshu.io/upload_images/1923109-df41173c8bf0bf56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                    "price": 2345.00,
+                    "originalPrice": 4567.00,
+                    "skuInfo": "颜色 黑色  尺码 XXXL码"
+                }
+            ],
+            "orderInfo": "共1件商品 实付￥300.00元"
+        },
+                     {
+            "type": "sendOutGoods",
+            "orderId": "4536789",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": "ZHANGSHUAI 张帅 高圆圆 范冰冰 angelababy 杨思琦 明星同款 甜美夏日条纹棒棒糖连衣裙 Z00442020051",
+                    "productImg": "http://upload-images.jianshu.io/upload_images/1923109-df41173c8bf0bf56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                    "price": 2345.00,
+                    "originalPrice": 4567.00,
+                    "skuInfo": "颜色 黑色  尺码 XXXL码"
+                }
+            ],
+            "orderInfo": "共1件商品 实付￥300.00元"
+        },
+              {
+            "type": "receive",
+            "orderId": "1234567",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": "吉承 JICHENG 李宇春 黄磊 郁可唯 张亮 中国好声音导师 雨神 萧敬腾 明星同款 放飞梦想 鹤影系列 天使卫衣 翅膀卫衣 梦想卫衣 梦想导师卫衣 男女同款 四色入",
+                    "productImg": "http://upload-images.jianshu.io/upload_images/1923109-df41173c8bf0bf56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                    "price": 1234.00,
+                    "originalPrice": 1234.00,
+                    "skuInfo": "颜色 黑色  尺码 XL码"
+                }
+            ],
+            "orderInfo": "共1件商品 实付￥300.00元"
+        },
+              {
+            "type": "receive",
+            "orderId": "1234567",
+            "productList": [
+                {
+                    "productId": 123456,
+                    "productName": "POLLYANNA KEONG 姜悦音  duplicity“公主与皇后两面性”系列 前短后长 竖纹拼接 露脐长袖 上衣",
+                    "productImg": "http://upload-images.jianshu.io/upload_images/1923109-df41173c8bf0bf56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
+                    "price": 1234.00,
+                    "originalPrice": 1234.00,
+                    "skuInfo": "颜色 黑色  尺码 S码"
+                }
+            ],
+            "orderInfo": "共1件商品 实付￥300.00元"
+        },
+    ]
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "ID": 0,
+    "list": [
+      {
+        "img": "123.png",
+        "title": "我的收藏",
+        "badge": "5"
+      },
+      {
+        "img": "456.png",
+        "title": "关注品牌",
+        "badge": "99"
+      }
+    ]
+  },
+  {
+    "ID": 1,
+    "sonId": 1,
+    "title": "我的订单",
+    "badge": "5",
+    "img": "../../Source/Mine/icon_mine_pay.png"
+  },
+  {
+    "ID": 2,
+    "list": [
+      {
+        "img": "../../Source/Mine/icon_mine_pay.png",
+        "title": "代付款",
+        "badge": "5"
+      },
+      {
+        "img": "icon_mine_afsale.png",
+        "title": "代发货",
+        "badge": "5"
+      },
+      {
+        "img": "icon_mine_delivery.png",
+        "title": "待收货",
+        "badge": "5"
+      },
+      {
+        "img": "icon_mine_comment.png",
+        "title": "待评价",
+        "badge": "5"
+      },
+      {
+        "img": "icon_mine_receive.png",
+        "title": "售后",
+        "badge": "5"
+      }
+    ]
+  },
+  {
+    "ID": 1,
+    "sonId": 3,
+    "title": "我的钱包",
+    "badge": "5",
+    "info": "0元",
+    "img": "../../Source/Mine/icon_mine_pay.png"
+  },
+    {
+    "ID": 1,
+    "sonId": 1,
+    "title": "我的粉丝",
+    "badge": "5",
+    "info": "10人",
+    "img": "../../Source/Mine/icon_mine_pay.png"
+  },
+  {
+    "ID": 1,
+    "sonId": 2,
+    "title": "优惠券",
+    "badge": "5",
+    "img": "../../Source/Mine/icon_mine_pay.png"
+  },
+  {
+    "ID": 1,
+    "sonId": 1,
+    "title": "自定义tabView",
+    "img": "../../Source/Mine/icon_mine_pay.png"
+  },
+  {
+    "ID": 1,
+    "sonId": 1,
+    "title": "消息通知",
+    "img": "../../Source/Mine/icon_mine_pay.png"
+  },
+  {
+    "ID": 1,
+    "sonId": 1,
+    "title": "更多工具",
+    "info": "T设置",
+    "img": "../../Source/Mine/icon_mine_pay.png"
+  },
+  {
+    "ID": 1,
+    "sonId": 1,
+    "title": "售后&客服",
+    "badge": "5",
+    "img": "../../Source/Mine/icon_mine_pay.png"
+  },
+  {
+    "ID": 1,
+    "sonId": 1,
+    "title": "设置",
+    "badge": "5",
+    "img": "../../Source/Mine/icon-mine-card.png"
+  }
+]
