@@ -136,7 +136,5 @@ const SimpleApp = StackNavigator({
         path :'app/KIEmptyPage', //使用url导航时用到， 如web app与 deep link
         navigationOptions:{}   //此处设置了，会覆盖组件内部的 static navigationOptions
      },
-}, {
-    //initialRouteName:'Home', //默认显示界面
 });
 export default SimpleApp;

@@ -47957,10 +47957,13 @@ var styles = _reactNative.StyleSheet.create({
 var SimpleApp = (0, _reactNavigation.StackNavigator)({
     Home: { screen: MainScreenNavigator },
     KIMineOrderList: { screen: _KIMineOrderList2.default },
-    KIEmptyPage: { screen: _KIEmptyPage2.default },
     MyTabViewDemo: { screen: _MyTabViewDemo2.default },
     KIEmptyPage1: { screen: _KIEmptyPage4.default },
-    KIWebView: { screen: _KIWebView2.default }
+    KIWebView: { screen: _KIWebView2.default },
+    KIEmptyPage: {
+        screen: _KIEmptyPage2.default,
+        path: 'app/KIEmptyPage',
+        navigationOptions: {} }
 });
 exports.default = SimpleApp;
 }, 417, null, "myapp/APP/Comment/App.js");
