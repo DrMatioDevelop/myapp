@@ -94,16 +94,28 @@ export default class KIEmptyPage extends React.Component {
     });
 
     state = { value: 'from parent' };
-
     render() {
+        console.log('-------'+this.props);
         return (
             <View style={{ backgroundColor: 'white', flex: 1 }}>
                 <Note {...this.state} />
                 <Button title='改变props' onPress={() => { this.setState({ value: 'changed' }) }}></Button>
                 <Button title='childPage' onPress={() => { this.props.navigation.navigate('KIEmptyPage1', { title: '测试页面' }) }}></Button>
 
+                <View style={{marginTop:20,height:200,backgroundColor:'rgba(230,230,230,1.0)'}}>
+                    <Button title='返回上一级' style={{color:'red' ,backgroundColor:'white'}} 
+                    onPress={()=>{
+                        this.props.navigation.state.params.customGoBack('从 【'+this.props.navigation.state.params.title+'】 返回'),
+                        this.props.navigation.goBack()
+                        }}/>
+                </View>
             </View>
+
         );
+    }
+
+    componentWillUnmount() {
+        this.props.navigation.state.params.customGoBack('从 【'+this.props.navigation.state.params.title+'】 返回');
     }
 
 

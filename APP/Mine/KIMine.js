@@ -18,6 +18,8 @@ export default class KIMine extends Component {
         },
     }
 
+
+
     constructor(props) {
         super(props);
         var data = require('../Source/Mine/Mine.json');
@@ -26,6 +28,10 @@ export default class KIMine extends Component {
             datasource: ds.cloneWithRows(data),
         };
 
+    }
+
+    customGoBack(info) {
+        this.setState({info : info});
     }
     render() {
         return (
@@ -45,11 +51,11 @@ export default class KIMine extends Component {
             );
         } else if (rowData.ID == 1) {
             return (
-                <KIMineNormalCell onSelect={(title) => { this._show(title) }} rowData={rowData} />
+                <KIMineNormalCell onSelect={(title) => { this._pushOrPresent(title) }} rowData={rowData} />
             );
         } else if (rowData.ID == 2) {
             return (
-                <KIMineOrderTypeCell onSelect={(title) => { this._show(title) }} rowData={rowData} />
+                <KIMineOrderTypeCell onSelect={(title) => { this._pushOrPresent(title) }} rowData={rowData} />
             );
         } else {
             return (
@@ -59,8 +65,8 @@ export default class KIMine extends Component {
 
     }
 
-    //提示
-    _show(text) {
+    //跳转界面
+    _pushOrPresent(text) {
         // alert(text);
         if (text == "我的订单") {
             this.props.navigation.navigate('KIMineOrderList', { title: text, index:0 });
@@ -69,13 +75,13 @@ export default class KIMine extends Component {
             this.props.navigation.navigate('MyTabViewDemo',{title:text});
         }
         else {
-            this.props.navigation.navigate('KIEmptyPage', { title: text });
+            this.props.navigation.navigate('KIEmptyPage', { title: text ,customGoBack:this.customGoBack.bind(this) });
         }
     }
     //头部视图
     _renderHeader() {
         return (
-            <KIMineNormalHead onClickHead={() => { this._headEvent('点击了头部') }}></KIMineNormalHead>
+            <KIMineNormalHead onClickHead={() => { this._headEvent('点击了头部') }} headData={this.state.info}/>
         );
     }
     //头部点击事件

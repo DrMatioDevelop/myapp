@@ -5,24 +5,23 @@ const marginSpace = 20;
 export default class KIMineNormalHead extends React.Component {
     render() {
         return (
-            /*<View style={styles.container}>
-                <Image style={styles.headImageSty} source={{ uri: this.props.rowData.imgUrl }} />
-                <Text style={styles.nameSty}>{this.props.rowData.nickName}</Text>
-                <Image style={styles.iconImage} source={require('../../Source/General/icon_a_rightarrow.png')} />>
-                <View style={styles.alignSelf} />>
-            </View>*/
             <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'column', justifyContent: 'center' }}>
                 <TouchableOpacity onPress={this.props.onClickHead} activeOpacity={1}>
-
                     <View style={styles.container}>
-                        <View style={{ flex: 2, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
+                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
                             <Image style={styles.headImageSty} source={require('../../Source/General/head.png')} />
-                            <Text style={styles.nameSty} numberOfLines={1} >德玛西亚德玛西亚德玛西亚德玛西亚</Text>
+                            <View style={{ flex: 3, flexDirection: 'column', justifyContent: 'center' }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                    <Text style={[styles.nameSty, { marginLeft: 10 }]} numberOfLines={1} >德玛西亚德玛西亚德玛西亚德玛西亚</Text>
+                                    <Image style={[styles.iconImage, { marginRight: 10 }]} source={require('../../Source/General/icon_a_rightarrow.png')} />
+                                </View>
+                                <Text style={{ fontSize: 12, color: 'red', marginTop: 10, marginLeft: 10 }} numberOfLines={1}>
+                                    {this.props.headData ? this.props.headData : '随手十五字'}
+                                </Text>
+                            </View>
                         </View>
 
-                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-                            <Image style={styles.iconImage} source={require('../../Source/General/icon_a_rightarrow.png')} />
-                        </View>
+
                     </View>
                     <View style={styles.lineStyle} />
                 </TouchableOpacity>

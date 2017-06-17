@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
+/**
+ * 我的 我的收藏  关注的品牌  关系
+ */
 export default class KIMineAboutRelationCell extends React.Component {
     render() {
         var item = this.props.rowData.list;
