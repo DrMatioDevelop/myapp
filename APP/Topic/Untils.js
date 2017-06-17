@@ -1,5 +1,5 @@
 import React , {} from 'react';
-import {PixelRatio} from 'react-native';
+import {PixelRatio, Platform} from 'react-native';
 import Dimensions from 'Dimensions';
 
 const Until = {
@@ -9,6 +9,8 @@ const Until = {
         width : Dimensions.get('window').width,
         height:Dimensions.get('window').height
     },
+    IOS : Platform.OS === 'ios' ? true : false,
+    // Android = Platform.OS === 'android' ? true : fail,
     post (url, data, callback) {
         const fetchOptions = {
             method : 'POST',

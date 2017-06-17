@@ -34,7 +34,7 @@ class WatchControl extends Component {
       startBtnText: '启动',
       startBtnColor: '#60B644',
       stopBtnText: '计次',
-      underlayColor: '#FFF',
+      underlayColor: '#FFF', //当触控或者点击的颜色
     };
   }
 
@@ -156,7 +156,7 @@ export default class day1 extends Component {
     return (
       <View style={styles.watchContainer}>
         <WatchFace totalTime={this.state.totalTime} sectionTime={this.state.sectionTime}></WatchFace>
-        <WatchControl addRecord={()=>this._addRecord()} clearRecord={()=>this._clearRecord()} startWatch={()=>this._startWatch()} stopWatch={()=>this._stopWatch()}></WatchControl>
+        <WatchControl addRecord={() => this._addRecord()} clearRecord={() => this._clearRecord()} startWatch={() => this._startWatch()} stopWatch={() => this._stopWatch()}></WatchControl>
         <WatchRecord record={this.state.record}></WatchRecord>
       </View>
     );
@@ -248,7 +248,6 @@ const styles = StyleSheet.create({
   watchContainer: {
     alignItems: 'center',
     backgroundColor: '#f3f3f3',
-    marginTop: 60.0,
   },
   watchFaceContainer: {
     width: Util.size.width,
