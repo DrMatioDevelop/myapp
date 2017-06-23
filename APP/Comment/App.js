@@ -15,6 +15,7 @@ import KIWebView from './KIWebView';
 //专题 
 import KIRNDemo from '../Topic/KIRNDemo';
 import RNDay1  from '../Topic/Day/day1';
+import RNDay2  from '../Topic/Day/day2'
 //我的
 import KIMineOrderList from '../Mine/KIMineOrderList'
 import MyTabViewDemo from '../Mine/MyTabViewDemo'
@@ -140,6 +141,7 @@ const SimpleApp = StackNavigator({
     },
     KIRNDemo : {screen:KIRNDemo},
     RNDay1:{screen:RNDay1},
+    RNDay2:{screen:RNDay2},
     KIMineOrderList: { screen: KIMineOrderList },
     MyTabViewDemo: { screen: MyTabViewDemo },
     KIEmptyPage1: { screen: KIEmptyPage1 },

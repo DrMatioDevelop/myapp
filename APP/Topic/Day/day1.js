@@ -101,7 +101,7 @@ class WatchRecord extends Component {
 
   render() {
     let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 }),
-      thDataSource = ds.cloneWithRows(this.props.record);
+    thDataSource = ds.cloneWithRows(this.props.record);
 
     return (
       <ListView style={styles.recordList} dataSource={thDataSource}

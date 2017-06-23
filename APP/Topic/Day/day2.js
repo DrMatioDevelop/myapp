@@ -1,340 +1,384 @@
-/**
- * Day 1
- * A stop watch
- */
 'use strict';
-
-import React,{ Component } from 'react';
-import { Platform,ListView,StyleSheet,StatusBar,Text,TouchableHighlight,View } from 'react-native';
+import React, { Component } from 'react';
+import { Platform, Image, StyleSheet, ScrollView, Text, TouchableHighlight, View } from 'react-native';
 import Util from '../Untils';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Swiper from 'react-native-swiper'
 
-class WatchFace extends Component{
+const weatherData = [{ key: 0, city: "\u798f\u5dde", night: !0, bg: require("./img/w2.png"), abs: "\u5927\u90e8\u6674\u6717", degree: 15, today: { week: "\u661f\u671f\u516d", day: "\u4eca\u5929", high: 16, low: 14 }, hours: [{ key: 101, time: "\u73b0\u5728", icon: "ios-moon", degree: "15\xb0", color: "rgba(255,255,255,1)" }, { key: 102, time: "3\u65f6", icon: "ios-cloudy-night", degree: "15\xb0", color: "rgba(255,255,255,0.8)" }, { key: 103, time: "4\u65f6", icon: "ios-cloudy-night", degree: "16\xb0", color: "rgba(255,255,255,0.8)" }, { key: 104, time: "5\u65f6", icon: "ios-cloudy-night", degree: "16\xb0", color: "rgba(255,255,255,0.8)" }, { key: 105, time: "6\u65f6", icon: "ios-cloudy-night", degree: "16\xb0", color: "rgba(255,255,255,0.8)" }, { key: 106, time: "06:21", icon: "ios-sunny-outline", degree: "\u65e5\u51fa", color: "#fedf32" }, { key: 107, time: "7\u65f6", icon: "ios-partly-sunny", degree: "16\xb0", color: "rgba(255,255,255,0.9)" }, { key: 108, time: "8\u65f6", icon: "ios-partly-sunny", degree: "18\xb0", color: "rgba(255,255,255,0.9)" }, { key: 109, time: "9\u65f6", icon: "ios-sunny", degree: "19\xb0", color: "#fedf32" }, { key: 110, time: "10\u65f6", icon: "ios-sunny", degree: "122\xb0", color: "#fedf32" }, { key: 111, time: "11\u65f6", icon: "ios-sunny", degree: "23\xb0", color: "#fedf32" }, { key: 112, time: "13\u65f6", icon: "ios-sunny", degree: "22\xb0", color: "#fedf32" }, { key: 113, time: "13\u65f6", icon: "ios-sunny", degree: "22\xb0", color: "#fedf32" }, { key: 114, time: "14\u65f6", icon: "ios-partly-sunny", degree: "16\xb0", color: "rgba(255,255,255,0.9)" }, { key: 115, time: "15\u65f6", icon: "ios-partly-sunny", degree: "22\xb0", color: "rgba(255,255,255,0.9)" }, { key: 116, time: "16\u65f6", icon: "ios-partly-sunny", degree: "21\xb0", color: "rgba(255,255,255,0.9)" }, { key: 117, time: "17\u65f6", icon: "ios-partly-sunny", degree: "19\xb0", color: "rgba(255,255,255,0.9)" }, { key: 118, time: "18\u65f6", icon: "ios-partly-sunny", degree: "18\xb0", color: "rgba(255,255,255,0.9)" }, { key: 119, time: "18:06", icon: "ios-partly-sunny-outline", degree: "\u65e5\u843d", color: "rgba(255,255,255,0.9)" }, { key: 120, time: "19\u65f6", icon: "ios-cloudy-night", degree: "18\xb0", color: "rgba(255,255,255,0.8)" }, { key: 121, time: "20\u65f6", icon: "ios-cloudy-night", degree: "18\xb0", color: "rgba(255,255,255,0.8)" }, { key: 122, time: "21\u65f6", icon: "ios-cloudy-night", degree: "18\xb0", color: "rgba(255,255,255,0.8)" }, { key: 123, time: "22\u65f6", icon: "ios-cloudy-night", degree: "17\xb0", color: "rgba(255,255,255,0.8)" }, { key: 124, time: "23\u65f6", icon: "ios-cloudy", degree: "17\xb0", color: "rgba(255,255,255,0.8)" }, { key: 125, time: "0\u65f6", icon: "ios-cloudy", degree: "17\xb0", color: "rgba(255,255,255,0.8)" }, { key: 126, time: "1\u65f6", icon: "ios-cloudy", degree: "17\xb0", color: "rgba(255,255,255,0.8)" }, { key: 127, time: "2\u65f6", icon: "ios-cloudy", degree: "17\xb0", color: "rgba(255,255,255,0.8)" }], days: [{ key: 21, day: "\u661f\u671f\u4e00", icon: "ios-partly-sunny", high: 21, low: 16 }, { key: 22, day: "\u661f\u671f\u4e8c", icon: "ios-rainy", high: 22, low: 14 }, { key: 23, day: "\u661f\u671f\u4e09", icon: "ios-rainy", high: 21, low: 11 }, { key: 24, day: "\u661f\u671f\u56db", icon: "ios-rainy", high: 12, low: 8 }, { key: 25, day: "\u661f\u671f\u4e94", icon: "ios-rainy", high: 9, low: 7 }, { key: 26, day: "\u661f\u671f\u516d", icon: "ios-partly-sunny", high: 13, low: 9 }, { key: 27, day: "\u661f\u671f\u65e5", icon: "ios-rainy", high: 17, low: 13 }, { key: 28, day: "\u661f\u671f\u4e00", icon: "ios-partly-sunny", high: 18, low: 14 }, { key: 29, day: "\u661f\u671f\u4e8c", icon: "ios-partly-sunny", high: 22, low: 17 }], info: "\u4eca\u5929\uff1a\u4eca\u5929\u5927\u90e8\u591a\u4e91\u3002\u73b0\u5728\u6c14\u6e29 15\xb0\uff1b\u6700\u9ad8\u6c14\u6e2923\xb0\u3002", rise: "06:21", down: "18:06", prop: "10%", humi: "94%", dir: "\u4e1c\u5317\u504f\u5317", speed: "3\u5343\u7c73\uff0f\u5c0f\u65f6", feel: "15\xb0", rain: "0.0 \u5398\u7c73", pres: "1,016 \u767e\u5e15", sight: "5.0 \u516c\u91cc", uv: "0" }, { key: 1, city: "\u5361\u5c14\u52a0\u91cc", night: !1, bg: require("./img/w3.png"), abs: "\u5927\u90e8\u6674\u6717", degree: 15, today: { week: "\u661f\u671f\u516d", day: "\u4eca\u5929", high: 16, low: 14 }, hours: [{ key: 101, time: "\u73b0\u5728", icon: "ios-moon", degree: "15\xb0", color: "rgba(255,255,255,1)" }, { key: 102, time: "3\u65f6", icon: "ios-cloudy-night", degree: "15\xb0", color: "rgba(255,255,255,0.8)" }, { key: 103, time: "4\u65f6", icon: "ios-cloudy-night", degree: "16\xb0", color: "rgba(255,255,255,0.8)" }, { key: 104, time: "5\u65f6", icon: "ios-cloudy-night", degree: "16\xb0", color: "rgba(255,255,255,0.8)" }, { key: 105, time: "6\u65f6", icon: "ios-cloudy-night", degree: "16\xb0", color: "rgba(255,255,255,0.8)" }, { key: 106, time: "06:21", icon: "ios-sunny-outline", degree: "\u65e5\u51fa", color: "#fedf32" }, { key: 107, time: "7\u65f6", icon: "ios-partly-sunny", degree: "16\xb0", color: "rgba(255,255,255,0.9)" }, { key: 108, time: "8\u65f6", icon: "ios-partly-sunny", degree: "18\xb0", color: "rgba(255,255,255,0.9)" }, { key: 109, time: "9\u65f6", icon: "ios-sunny", degree: "19\xb0", color: "#fedf32" }, { key: 110, time: "10\u65f6", icon: "ios-sunny", degree: "122\xb0", color: "#fedf32" }, { key: 111, time: "11\u65f6", icon: "ios-sunny", degree: "23\xb0", color: "#fedf32" }, { key: 112, time: "13\u65f6", icon: "ios-sunny", degree: "22\xb0", color: "#fedf32" }, { key: 113, time: "13\u65f6", icon: "ios-sunny", degree: "22\xb0", color: "#fedf32" }, { key: 114, time: "14\u65f6", icon: "ios-partly-sunny", degree: "16\xb0", color: "rgba(255,255,255,0.9)" }, { key: 115, time: "15\u65f6", icon: "ios-partly-sunny", degree: "22\xb0", color: "rgba(255,255,255,0.9)" }, { key: 116, time: "16\u65f6", icon: "ios-partly-sunny", degree: "21\xb0", color: "rgba(255,255,255,0.9)" }, { key: 117, time: "17\u65f6", icon: "ios-partly-sunny", degree: "19\xb0", color: "rgba(255,255,255,0.9)" }, { key: 118, time: "18\u65f6", icon: "ios-partly-sunny", degree: "18\xb0", color: "rgba(255,255,255,0.9)" }, { key: 119, time: "18:06", icon: "ios-partly-sunny-outline", degree: "\u65e5\u843d", color: "rgba(255,255,255,0.9)" }, { key: 120, time: "19\u65f6", icon: "ios-cloudy-night", degree: "18\xb0", color: "rgba(255,255,255,0.8)" }, { key: 121, time: "20\u65f6", icon: "ios-cloudy-night", degree: "18\xb0", color: "rgba(255,255,255,0.8)" }, { key: 122, time: "21\u65f6", icon: "ios-cloudy-night", degree: "18\xb0", color: "rgba(255,255,255,0.8)" }, { key: 123, time: "22\u65f6", icon: "ios-cloudy-night", degree: "17\xb0", color: "rgba(255,255,255,0.8)" }, { key: 124, time: "23\u65f6", icon: "ios-cloudy", degree: "17\xb0", color: "rgba(255,255,255,0.8)" }, { key: 125, time: "0\u65f6", icon: "ios-cloudy", degree: "17\xb0", color: "rgba(255,255,255,0.8)" }, { key: 126, time: "1\u65f6", icon: "ios-cloudy", degree: "17\xb0", color: "rgba(255,255,255,0.8)" }, { key: 127, time: "2\u65f6", icon: "ios-cloudy", degree: "17\xb0", color: "rgba(255,255,255,0.8)" }], days: [{ key: 21, day: "\u661f\u671f\u4e00", icon: "ios-partly-sunny", high: 21, low: 16 }, { key: 22, day: "\u661f\u671f\u4e8c", icon: "ios-rainy", high: 22, low: 14 }, { key: 23, day: "\u661f\u671f\u4e09", icon: "ios-rainy", high: 21, low: 11 }, { key: 24, day: "\u661f\u671f\u56db", icon: "ios-rainy", high: 12, low: 8 }, { key: 25, day: "\u661f\u671f\u4e94", icon: "ios-rainy", high: 9, low: 7 }, { key: 26, day: "\u661f\u671f\u516d", icon: "ios-partly-sunny", high: 13, low: 9 }, { key: 27, day: "\u661f\u671f\u65e5", icon: "ios-rainy", high: 17, low: 13 }, { key: 28, day: "\u661f\u671f\u4e00", icon: "ios-partly-sunny", high: 18, low: 14 }, { key: 29, day: "\u661f\u671f\u4e8c", icon: "ios-partly-sunny", high: 22, low: 17 }], info: "\u4eca\u5929\uff1a\u4eca\u5929\u5927\u90e8\u591a\u4e91\u3002\u73b0\u5728\u6c14\u6e29 15\xb0\uff1b\u6700\u9ad8\u6c14\u6e2923\xb0\u3002", rise: "06:21", down: "18:06", prop: "10%", humi: "94%", dir: "\u4e1c\u5317\u504f\u5317", speed: "3\u5343\u7c73\uff0f\u5c0f\u65f6", feel: "15\xb0", rain: "0.0 \u5398\u7c73", pres: "1,016 \u767e\u5e15", sight: "5.0 \u516c\u91cc", uv: "0" }];
+
+class Weather extends Component {
   static propTypes = {
-    sectionTime: React.PropTypes.string.isRequired,
-    totalTime: React.PropTypes.string.isRequired,
-  }; 
-
-  render() {
-    return(
-      <View style={styles.watchFaceContainer}>
-        <Text style={styles.sectionTime}>{this.props.sectionTime}</Text>
-        <Text style={styles.totalTime}>{this.props.totalTime}</Text>
-      </View>
-    )
-  }
-}
-
-class WatchControl extends Component{
-  static propTypes = {
-    stopWatch: React.PropTypes.func.isRequired,
-    clearRecord: React.PropTypes.func.isRequired,
-    startWatch: React.PropTypes.func.isRequired,
-    addRecord: React.PropTypes.func.isRequired,
-  }; 
-
-  constructor(props){
+    back: React.PropTypes.func.isRequired
+  };
+  constructor(props) {
     super(props);
     this.state = {
-      watchOn: false, 
-      startBtnText: "启动",
-      startBtnColor: "#60B644",
-      stopBtnText: "计次",
-      underlayColor:"#fff",
+      weather: weatherData,
     };
   }
-
-  _startWatch() {
-    if (!this.state.watchOn) {
-      this.props.startWatch()
-      this.setState({
-        startBtnText: "停止",
-        startBtnColor: "#ff0044",
-        stopBtnText: "计次",
-        underlayColor:"#eee",
-        watchOn: true
-      })
-    }else{
-      this.props.stopWatch()
-      this.setState({
-        startBtnText: "启动",
-        startBtnColor: "#60B644",
-        stopBtnText: "复位",
-        underlayColor:"#eee",
-        watchOn: false
-      })
-    } 
-  }
-
-  _addRecord() {
-    if (this.state.watchOn) {
-      this.props.addRecord()
-    }else{
-      this.props.clearRecord()
-      this.setState({
-        stopBtnText: "计次"
-      })
-    }
+  _back() {
+    this.navigation.state.params.goBack();
   }
 
   render() {
-    return(
-      <View style={styles.watchControlContainer}>
-        <View style={{flex:1,alignItems:"flex-start"}}>
-          <TouchableHighlight style={styles.btnStop} underlayColor={this.state.underlayColor} onPress={()=>this._addRecord()}>
-            <Text style={styles.btnStopText}>{this.state.stopBtnText}</Text>
-          </TouchableHighlight>
+    const slides = this.state.weather.map((elem, index) => {
+      const hourView = elem.hours.map((hourElem, hourIndex) => {
+        return (
+          <View key={hourElem.key} style={styles.withinDayHourBox}>
+            <Text style={hourIndex == 0 ? styles.withinDayHoursTimeBold : styles.withinDayHoursTime}>{hourElem.time}</Text>
+            <Icon name={hourElem.icon} size={25} style={[styles.withinDayHoursIcon, { color: hourElem.color }]}></Icon>
+            <Text style={hourIndex == 0 ? styles.withinDayHoursDegreeBold : styles.withinDayHoursDegree}>{hourElem.degree}</Text>
           </View>
-          <View style={{flex:1,alignItems:"flex-end"}}>
-            <TouchableHighlight style={styles.btnStart} underlayColor="#eee" onPress={()=> this._startWatch()}>
-              <Text style={[styles.btnStartText,{color:this.state.startBtnColor}]}>{this.state.startBtnText}</Text>
-            </TouchableHighlight>
-          </View>
-      </View>
-    )
-  }
-}
+        );
+      });
 
-class WatchRecord extends Component{
-  static propTypes = {
-        record: React.PropTypes.array.isRequired,
-    }; 
-
-  render() {
-    let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
-    theDataSource = ds.cloneWithRows(this.props.record);
-    return (
-      <ListView
-        style={styles.recordList}
-        dataSource={theDataSource}
-        renderRow={(rowData) => 
-          <View style={styles.recordItem}>
-            <Text style={styles.recordItemTitle}>{rowData.title}</Text>
-            <View style={{alignItems: "center"}}>
-              <Text style={styles.recordItemTime}>{rowData.time}</Text>
+      const dayView = elem.days.map((dayElem, dayIndex) => {
+        return (
+          <View key={dayElem.key} style={styles.withinWeekLine}>
+            <View style={styles.withinWeekLine}>
+              <Text style={styles.withinWeekDayText}>{dayElem.day}</Text>
             </View>
-          </View>}/>
+            <View style={styles.withinWeekIcon}>
+              <Icon name={dayElem.icon} style={styles.withinWeekIconIcon} size={25}></Icon>
+            </View>
+            <View style={styles.withinWeekDegree}>
+              <Text style={styles.withinWeekHigh}>{dayElem.high}</Text>
+              <Text style={elem.night ? styles.withinWeekLowNight : styles.withinWeekLow}>{dayElem.low}</Text>
+            </View>
+          </View>
+        );
+      });
+      return (
+        <View key={elem.key}>
+          <Image style={styles.image} source={elem.bg} />
+          <ScrollView style={styles.pageContainer} showsVerticalScrollIndicator={false}>
+            <View style={styles.headInfo}>
+              <Text style={styles.city}>{elem.city}</Text>
+              <Text style={styles.abs}>{elem.abs}</Text>
+              <Text style={styles.degree}>{elem.degree}</Text>
+              <Text style={styles.circle}>°</Text>
+            </View>
+            <View>
+              <View style={styles.withinDayGeneral}>
+                <Text style={styles.withinDayWeek}>{elem.today.week}</Text>
+                <Text style={styles.withinDayDay}>{elem.today.day}</Text>
+              </View>
+              <View style={styles.withinDayTail}>
+                <Text style={styles.withinDayHigh}>{elem.today.high}</Text>
+                <Text style={elem.night ? styles.withinDayLowNight : styles.withinDayLow}>{elem.today.low}</Text>
+              </View>
+            </View>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+              <View style={styles.withinDayHours}>
+                {hourView}
+              </View>
+            </ScrollView>
+            <View style={styles.withinWeek}>
+              {dayView}
+            </View>
+            <View style={styles.weatherInfo}>
+              <Text style={styles.weatherInfoText}>{elem.info}</Text>
+            </View>
+            <View style={styles.weatherOther}>
+              <View style={styles.weatherOtherSection}>
+                <View style={styles.weatherOtherLine}>
+                  <Text style={styles.weatherOtherTitle}>日出：</Text>
+                  <Text style={styles.weatherOtherValue}>{elem.rise}</Text>
+                </View>
+                <View style={styles.weatherOtherLine}>
+                  <Text style={styles.weatherOtherTitle}>日落：</Text>
+                  <Text style={styles.weatherOtherValue}>{elem.down}</Text>
+                </View>
+              </View>
+              <View style={styles.weatherOtherSection}>
+                <View style={styles.weatherOtherLine}>
+                  <Text style={styles.weatherOtherTitle}>降雨概率：</Text>
+                  <Text style={styles.weatherOtherValue}>{elem.prop}</Text>
+                </View>
+                <View style={styles.weatherOtherLine}>
+                  <Text style={styles.weatherOtherTitle}>湿度：</Text>
+                  <Text style={styles.weatherOtherValue}>{elem.humi}</Text>
+                </View>
+              </View>
+              <View style={styles.weatherOtherSection}>
+                <View style={styles.weatherOtherLine}>
+                  <Text style={styles.weatherOtherTitle}>风速：</Text>
+                  <Text style={styles.weatherOtherValue}><Text style={{ fontSize: 10 }}>{elem.dir}</Text>{elem.speed}</Text>
+                </View>
+                <View style={styles.weatherOtherLine}>
+                  <Text style={styles.weatherOtherTitle}>体感温度：</Text>
+                  <Text style={styles.weatherOtherValue}>{elem.feel}</Text>
+                </View>
+              </View>
+              <View style={styles.weatherOtherSection}>
+                <View style={styles.weatherOtherLine}>
+                  <Text style={styles.weatherOtherTitle}>降水量：</Text>
+                  <Text style={styles.weatherOtherValue}>{elem.rain}</Text>
+                </View>
+                <View style={styles.weatherOtherLine}>
+                  <Text style={styles.weatherOtherTitle}>气压：</Text>
+                  <Text style={styles.weatherOtherValue}>{elem.pres}</Text>
+                </View>
+              </View>
+              <View style={styles.weatherOtherSection}>
+                <View style={styles.weatherOtherLine}>
+                  <Text style={styles.weatherOtherTitle}>能见度：</Text>
+                  <Text style={styles.weatherOtherValue}>{elem.sight}</Text>
+                </View>
+                <View style={styles.weatherOtherLine}>
+                  <Text style={styles.weatherOtherTitle}>紫外线指数：</Text>
+                  <Text style={styles.weatherOtherValue}>{elem.uv}</Text>
+                </View>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+      );
+    });
+    return(
+      <View>
+        <Swiper 
+        style={styles.wrapper}
+        showsButtons={false}
+        paginationStyle={{bottom:10,paddingTop:10,borderTopColor:'rgba(255,255,255,0.7)',borderTopWidth:Util.pixel}}
+        dot={<View style={{backgroundColor: 'rgba(255,255,255,0.2)', width: 6, height: 6, borderRadius: 3, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />}
+        activeDot={<View style={{backgroundColor: 'rgba(255,255,255,0.5)', width: 6, height: 6, borderRadius: 3, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />}>
+        {slides}
+        </Swiper>
+        <TouchableHighlight onPress={()=>this._back} style={styles.backBtn}>
+          <Icon size={17} name="ios-list-outline" style={styles.backBtnIcon}></Icon>
+        </TouchableHighlight>
+      </View>
     );
-  }
+  };
 }
 
-export default class extends Component{
-  constructor() {
-    super();
-      this.state = {
-        stopWatch: false,
-        resetWatch: true,
-        intialTime: 0,
-        currentTime:0,
-        recordTime:0,
-        timeAccumulation:0,
-        totalTime: "00:00.00",
-        sectionTime: "00:00.00",
-        recordCounter: 0,
-        record:[
-          {title:"",time:""},
-          {title:"",time:""},
-          {title:"",time:""},
-          {title:"",time:""},
-          {title:"",time:""},
-          {title:"",time:""},
-          {title:"",time:""}
-        ],
-    };
+export default class day2 extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    headerTitle: navigation.state.params.title ? navigation.state.params.title : '天气',
+    headerTitleStyle: { alignSelf: 'center' },
+  });
+  _back() {
+    alert('点击了返回');
   }
-
-  componentWillUnmount() {
-    this._stopWatch();
-    this._clearRecord();
-  }
-
-  componentDidMount() {
-    if(Platform.OS === "ios"){
-      StatusBar.setBarStyle(0);
-    }
-  }
-
-  _startWatch() {
-    if (this.state.resetWatch) {
-      this.setState({
-        stopWatch: false,
-        resetWatch: false,
-        timeAccumulation:0,
-        initialTime: (new Date()).getTime()
-      })
-    }else{
-      this.setState({
-        stopWatch: false,
-        initialTime: (new Date()).getTime()
-      })
-    }
-    let milSecond, second, minute, countingTime, secmilSecond, secsecond, secminute, seccountingTime;
-    let interval = setInterval(
-        () => { 
-          this.setState({
-            currentTime: (new Date()).getTime()
-          })
-          countingTime = this.state.timeAccumulation + this.state.currentTime - this.state.initialTime;
-          minute = Math.floor(countingTime/(60*1000));
-          second = Math.floor((countingTime-6000*minute)/1000);
-          milSecond = Math.floor((countingTime%1000)/10);
-          seccountingTime = countingTime - this.state.recordTime;
-          secminute = Math.floor(seccountingTime/(60*1000));
-          secsecond = Math.floor((seccountingTime-6000*secminute)/1000);
-          secmilSecond = Math.floor((seccountingTime%1000)/10);
-          this.setState({
-            totalTime: (minute<10? "0"+minute:minute)+":"+(second<10? "0"+second:second)+"."+(milSecond<10? "0"+milSecond:milSecond),
-            sectionTime: (secminute<10? "0"+secminute:secminute)+":"+(secsecond<10? "0"+secsecond:secsecond)+"."+(secmilSecond<10? "0"+secmilSecond:secmilSecond),
-          })
-          if (this.state.stopWatch) {
-            this.setState({
-              timeAccumulation: countingTime 
-            })
-            clearInterval(interval)
-          };
-        },10);
-  }
-
-  _stopWatch() {
-    this.setState({
-      stopWatch: true
-    })
-  }
-
-  _addRecord() {
-    let {recordCounter, record} = this.state;
-    recordCounter++;
-    if (recordCounter<8) {
-      record.pop();
-    }
-    record.unshift({title:"计次"+recordCounter,time:this.state.sectionTime});
-    this.setState({
-      recordTime: this.state.timeAccumulation + this.state.currentTime - this.state.initialTime,
-      recordCounter: recordCounter,
-      record: record
-    })
-    //use refs to call functions within other sub component
-    //can force to update the states
-    // this.refs.record._updateData();
-  }
-
-  _clearRecord() {
-    this.setState({
-      stopWatch: false,
-      resetWatch: true,
-      intialTime: 0,
-      currentTime:0,
-      recordTime:0,
-      timeAccumulation:0,
-      totalTime: "00:00.00",
-      sectionTime: "00:00.00",
-      recordCounter: 0,
-      record:[
-        {title:"",time:""},
-        {title:"",time:""},
-        {title:"",time:""},
-        {title:"",time:""},
-        {title:"",time:""},
-        {title:"",time:""},
-        {title:"",time:""}
-      ],
-     });
-  }
-
-  render(){
-    return(
-      <View style={styles.watchContainer}>
-        <WatchFace totalTime={this.state.totalTime} sectionTime={this.state.sectionTime}></WatchFace>
-        <WatchControl addRecord={()=>this._addRecord()} clearRecord={()=>this._clearRecord()} startWatch={()=>this._startWatch()} stopWatch={()=>this._stopWatch()}></WatchControl>
-        <WatchRecord record={this.state.record}></WatchRecord>
+  render() {
+    return (
+      <View style={styles.weatherContainer}>
+        <Weather back={()=>this._back()}></Weather>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  watchContainer:{
-    alignItems: "center",
-    backgroundColor: "#f3f3f3",
-    marginTop: 60,
-  },
-  watchFaceContainer:{
+  pageContainer: {
+    backgroundColor: 'transparent',
+    position: 'absolute',
     width: Util.size.width,
-    paddingTop: 50, paddingLeft: 30, paddingRight:30, paddingBottom:40,
-    backgroundColor: "#fff",
-    borderBottomWidth: 1, borderBottomColor:"#ddd",
-    height: 170,
+    left: 0,
+    top: 0,
+    height: Util.size.height - 64,
   },
-  sectionTime:{
-    fontSize: 20,
-    fontWeight:"100",
-    paddingRight: 30,
-    color: "#555",
-    position:"absolute",
-    left:Util.size.width-140,
-    top:30
+  headInfo: {
+    paddingTop: 70,
+    alignItems: 'center',
+    paddingBottom: 60,
   },
-  totalTime:{
-    fontSize: Util.size.width === 375? 70:60,
-    fontWeight: "100",
-    color: "#222",
-    paddingLeft:20
+  city: {
+    fontSize: 25,
+    color: '#FFF',
+    paddingBottom: 5,
+    backgroundColor: 'transparent',
   },
-  watchControlContainer:{
+  abs: {
+    fontSize: 15,
+    color: '#FFF',
+    backgroundColor: 'transparent',
+  },
+  degree: {
+    fontSize: 85,
+    color: '#FFF',
+    fontWeight: '100',
+  },
+  circle: {
+    fontSize: 35,
+    color: '#FFF',
+    fontWeight: '300',
+    position: 'absolute',
+    top: 130,
+    right: Util.size.width / 2 - 55,
+  },
+  withinDayGeneral: {
+    flexDirection: 'row',
     width: Util.size.width,
-    height: 100,
-    flexDirection:"row",
-    backgroundColor: '#f3f3f3',
-    paddingTop: 30, paddingLeft: 60, paddingRight:60, paddingBottom:0,
   },
-  btnStart:{
-    width: 70,
-    height: 70,
-    borderRadius: 35,
-    backgroundColor:"#fff",
-    alignItems:"center",
-    justifyContent:"center"
+  withinDayHead: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    paddingLeft: 20,
   },
-  btnStop:{
-    width: 70,
-    height: 70,
-    borderRadius: 35,
-    backgroundColor:"#fff",
-    alignItems:"center",
-    justifyContent:"center"
+  withinDayTail: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingRight: 10,
   },
-  btnStartText:{
-    fontSize:14,
-    backgroundColor:"transparent"
+  withinDayWeek: {
+    fontSize: 15,
+    color: '#FFF',
+    fontWeight: '400',
+    width: 50,
   },
-  btnStopText:{
-    fontSize:14,
-    backgroundColor:"transparent",
-    color:"#555"
+  withinDayDay: {
+    fontSize: 15,
+    color: '#FFF',
+    fontWeight: '300',
+    width: 50,
   },
-  recordList:{
-    width: Util.size.width,
-    height: Util.size.height - 300,
+  withinDayHigh: {
+    fontSize: 16,
+    color: '#FFF',
+    fontWeight: '200',
+    width: 30,
+  },
+  withinDayLow: {
+    fontSize: 16,
+    color: '#EEE',
+    fontWeight: '200',
+    width: 30,
+  },
+  withinDayHourBox: {
+    width: 55,
+  },
+  withinDayHoursContainer: {
+    marginTop: 3,
+    borderTopColor: "rgba(255,255,255,0.7)", borderTopWidth: Util.pixel,
+    borderBottomColor: "rgba(255,255,255,0.7)", borderBottomWidth: Util.pixel
+  },
+  withinDayHours: {
+    paddingLeft: 7, paddingTop: 10, paddingBottom: 10, paddingRight: 10,
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+  },
+  withinDayHoursTime: {
+    color: '#FFF',
+    fontSize: 12,
+    textAlign: 'center',
+  },
+  withinDayHoursTimeBold: {
+    color: '#FFF',
+    fontSize: 13,
+    textAlign: 'center',
+    fontWeight: '500',
+  },
+  withinDayHoursIcon: {
+    textAlign: 'center',
+    paddingTop: 5,
+  },
+  withinDayHoursDegree: {
+    color: '#FFF',
+    fontSize: 14,
+    paddingTop: 5,
+    textAlign: 'center',
+  },
+  withinDayHoursDegreeBold: {
+    color: '#FFF',
+    fontSize: 15,
+    textAlign: 'center',
+    paddingTop: 5,
+    fontWeight: '500',
+  },
+  withinWeek: {
+    paddingTop: 5,
+  },
+  withinWeekLine: {
+    flexDirection: 'row',
+    height: 28,
+  },
+  withinWeekDay: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  withinWeekIcon: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  withinWeekDegree: {
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    paddingRight: 25,
+  },
+  withinWeekHigh: {
+    color: '#FFF',
+    width: 35,
+    fontSize: 16,
+    textAlign: 'right',
+  },
+  withinWeekIconIcon: {
+    color: '#FFF',
+  },
+  withinWeekLow: {
+    color: '#EEE',
+    width: 35,
+    fontSize: 16,
+    textAlign: 'right',
+  },
+  withinWeekLowNight: {
+    color: '#AAA',
+    width: 35,
+    fontSize: 16,
+    textAlign: 'right',
+  },
+  withinWeekDayText: {
+    color: '#FFF',
+    paddingLeft: 20,
+    fontSize: 15,
+  },
+  weatherInfo: {
+    marginTop: 5,
+    borderTopColor: "rgba(255,255,255,0.7)", borderTopWidth: Util.pixel,
+    borderBottomColor: "rgba(255,255,255,0.7)", borderBottomWidth: Util.pixel
+  },
+  weatherInfoText: {
+    color: '#FFF',
+    fontSize: 15,
+    paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 20,
+  },
+  weatherOther: {
+    paddingTop: 10,
+  },
+  weatherOtherSection: {
+    paddingBottom: 10,
+  },
+  weatherOtherLine: {
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+  },
+  weatherOtherTitle: {
+    width: Util.size.width / 2 - 15,
+    color: '#FFF',
+    textAlign: 'right',
+    fontSize: 15,
+  },
+  weatherOtherValue: {
+    width: Util.size.width / 2,
     paddingLeft: 15,
+    flex: 1,
+    fontSize: 15,
+    color: '#FFF',
   },
-  recordItem:{
-    height: 40,
-    borderBottomWidth:Util.pixel,borderBottomColor:"#bbb",
-    paddingTop: 5, paddingLeft: 10, paddingRight:10, paddingBottom:5,
-    flexDirection:"row",
-    alignItems:"center"
+  backBtn: {
+    position: 'absolute',
+    right: 20, bottom: 7,
   },
-  recordItemTitle:{
-    backgroundColor:"transparent",
-    flex:1,
-    textAlign:"left",
-    paddingLeft:20,
-    color:"#777"
+  backBtnIcon: {
+    color: '#FFF',
   },
-  recordItemTime:{
-    backgroundColor:"transparent",
-    flex:1,
-    textAlign:"right",
-    paddingRight:20,
-    color:"#222"
-  },
+
 });

@@ -63,7 +63,7 @@ export default class KIRNDemo extends React.Component {
     _pushOrPresent(position, index) {
         switch (index) {
             case 0: { this.props.navigation.navigate('RNDay1', { title: '' }); break };
-            case 1: { this.props.navigation.navigate('RNDay1', { title: '我的' }); break };
+            case 1: { this.props.navigation.navigate('RNDay2', { title: '天气' }); break };
             default: { alert('push ' + position + ' ' + index); break; };
         }
 
